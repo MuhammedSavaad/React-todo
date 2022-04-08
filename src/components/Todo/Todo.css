@@ -1,0 +1,77 @@
+/* width */
+::-webkit-scrollbar {
+width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+background: #011E2E;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: #064e75;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #555;
+}
+
+.main-body{
+    margin-top: 30px;
+    background: #123244;
+    border-radius: 20px;
+    height: 60vh;
+    padding: 20px;
+    width: 350px;
+    position: relative;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.enter_bar input{
+    background: #011E2E;
+    color: #A4A4A4;
+    border-radius: 5px;
+    border: 2px solid #a4a4a4;
+    padding: 10px 5px;
+    width: 300px;
+    padding-left: 20px;
+    font-size: 15px;
+}
+
+.enter_bar img{
+    position: absolute;
+    right: 44px;
+    top: 30px;
+    width: 22px;
+    cursor: pointer;
+}
+
+.todo-bar{
+    margin-top: 20px;
+}
+.todo-bar .todo{
+    background: #011E2E;
+    color: #c9c9c9;
+    border-radius: 5px;
+    /* border: 2px solid #a4a4a4; */
+    padding: 10px 5px;
+    width: 300px;
+    padding-left: 20px;
+    font-size: 15px;
+    position: relative;
+    margin-bottom: 10px;
+}
+.todo-bar .todo img{
+    position: absolute;
+    right: 12px;
+    top: 7px;
+    width: 22px;
+    cursor: pointer;
+}

@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Port Lligat Sans', sans-serif;
+  font-family: 'Nova Square', cursive;
 }
 
 body{
@@ -10,4 +10,8 @@ body{
   background: #011E2E;
   color: #ffffff;
   padding: 50px;
+}
+
+h1 {
+  font-weight: 500;
 }

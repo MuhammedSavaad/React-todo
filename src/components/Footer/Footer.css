@@ -1,0 +1,11 @@
+footer{
+    bottom: 20px;
+    position: fixed;
+    width: 100%;
+    right: 50%;
+    transform: translate(50%);
+}
+
+footer p{
+    text-align: center;
+}
