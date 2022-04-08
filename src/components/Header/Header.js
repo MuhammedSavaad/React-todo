@@ -5,7 +5,7 @@ function Header() {
   return (
     <header>
         <h1>Hey 👋</h1>
-        <p>Welcome To TO-DO App 😉💗</p>
+        <p>Welcome To TO-DO App 🌝💕</p>
     </header>
   )
 }
