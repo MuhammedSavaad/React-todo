@@ -1,9 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Todo.css';
 
 function Todo() {
-  const [toDos,setToDos]=useState([]);
+  const [toDos,setToDos]=useState(JSON.parse(localStorage.getItem('TodoList')) || []);
   const [toDo,setToDo]=useState('');
+  
+  useEffect(() => {
+    localStorage.setItem("TodoList", JSON.stringify(toDos));
+  }, [toDos]);
+
+  function deleteHandler(id){
+    const removeItem = toDos.filter((TodoList) => {
+      return TodoList.id !== id;
+    })
+    setToDos(removeItem);
+  }
+
+  function updateHandler(event, value){
+    console.log(event.target.checked);
+    const updateHandling = toDos.filter((TodoList) => {
+      if(TodoList.id === value.id){
+        TodoList.status = event.target.checked;
+      }
+
+      return TodoList;
+    })
+
+    setToDos(updateHandling);
+  }
 
   return (
     <section className="main-body">
@@ -18,6 +42,7 @@ function Todo() {
 
             <img onClick={()=>{
               setToDos([...toDos, {id:Date.now(), text:toDo, status:false}]);
+              localStorage.setItem("TodoList", JSON.stringify([...toDos, {id:Date.now(), text:toDo, status:false}]));
               setToDo('');
             }} src="/images/add.png" alt="add-button" />
         </div>
@@ -29,33 +54,20 @@ function Todo() {
                   <div className="todo" key={index}>
                     <p>{value.text}</p>
                     <label className="container">
-                      <input onChange={(e)=>{
-                        console.log(e.target.checked);
-                        console.log(value);
-                        setToDos(toDos.filter(obj=>{
-                          if(obj.id===value.id){
-                            obj.status=e.target.checked;
-                          }
-                          return obj;
-                        }))
-                      }} value={value.status} type="checkbox" />
+                      { value.status
+                        ?<input onChange={(e)=>updateHandler(e, value)} value={value.status} type="checkbox" checked /> 
+                        :<input onChange={(e)=>updateHandler(e, value)} value={value.status} type="checkbox" />}
                       <span className="checkmark"></span>
                     </label>
-                    <img onClick={() =>{
-                      setToDos(toDos.filter(obj => {
-                        let temp;
-                        if (obj.id != value.id){
-                          temp = obj
-                        }
-                        return temp;
-                      }));
-                    }} src="/images/trash.png" alt="trash-button" />
+                    <img onClick={() => deleteHandler(value.id)} src="/images/trash.png" alt="trash-button" />
                   </div>
                 )
               })
             }
 
-            {/* {toDos.map((value) => {
+            {/* ----------------------------------
+            // Show Completed Tasks
+            {toDos.map((value) => {
               if(value.status){
                 return(
                   <h1>{value.text}</h1>
@@ -63,7 +75,8 @@ function Todo() {
               }
 
               return null;
-            })} */}
+            })}
+            ----------------------------------- */}
         </div>
     </section>
   )
